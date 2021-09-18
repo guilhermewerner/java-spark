@@ -99,13 +99,14 @@ public class ProdutoDAO {
 
                 for (int i = 0; rs.next(); i++) {
                     produtos[i] = new Produto(rs.getInt("id"), rs.getString("descricao"), rs.getFloat("preco"),
-                            rs.getInt("quantidade")/* , rs.getDate("dataFabricacao"), rs.getDate("dataFabricacao") */);
+                    rs.getInt("quantidade"), rs.getTimestamp("dataFabricacao"), rs.getDate("dataValidade"));
                 }
             }
             st.close();
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
+
         return produtos;
     }
 
@@ -117,7 +118,7 @@ public class ProdutoDAO {
             ResultSet rs = st.executeQuery("SELECT * FROM produto WHERE produto.id = " + id);
             if (rs.first()) {
                 produto = new Produto(rs.getInt("id"), rs.getString("descricao"), rs.getFloat("preco"),
-                        rs.getInt("quantidade")/* , rs.getDate("dataFabricacao"), rs.getDate("dataFabricacao") */);
+                        rs.getInt("quantidade"), rs.getTimestamp("dataFabricacao"), rs.getDate("dataValidade"));
             }
             st.close();
         } catch (SQLException u) {

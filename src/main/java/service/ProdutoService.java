@@ -22,14 +22,14 @@ public class ProdutoService {
         String descricao = request.queryParams("descricao");
         float preco = Float.parseFloat(request.queryParams("preco"));
         int quantidade = Integer.parseInt(request.queryParams("quantidade"));
-        // LocalDateTime dataFabricacao =
-        // LocalDateTime.parse(request.queryParams("dataFabricacao"));
-        // LocalDate dataValidade =
-        // LocalDate.parse(request.queryParams("dataValidade"));
+        LocalDateTime dataFabricacao =
+        LocalDateTime.parse(request.queryParams("dataFabricacao"));
+        LocalDate dataValidade =
+        LocalDate.parse(request.queryParams("dataValidade"));
 
         int id = produtoDAO.getRandomId();
 
-        Produto produto = new Produto(id, descricao, preco, quantidade/* , dataFabricacao, dataValidade */);
+        Produto produto = new Produto(id, descricao, preco, quantidade , dataFabricacao, dataValidade);
 
         produtoDAO.inserirProduto(produto);
 

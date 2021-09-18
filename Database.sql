@@ -3,7 +3,7 @@ CREATE TABLE public.produto (
 	descricao varchar NOT NULL,
 	preco numeric NOT NULL,
 	quantidade int4 NOT NULL,
-	datafabricacao date NULL,
-	datavalidade date NULL,
+	datafabricacao date NOT NULL,
+	datavalidade date NOT NULL,
 	CONSTRAINT produto_pk PRIMARY KEY (id)
 );

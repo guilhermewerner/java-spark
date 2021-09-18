@@ -1,13 +1,14 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
+import java.sql.*;
 
 public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String DESCRICAO_PADRAO = "Novo Produto";
     public static final int MAX_ESTOQUE = 1000;
+
     private int id;
     private String descricao;
     private float preco;
@@ -15,31 +16,21 @@ public class Produto implements Serializable {
     private LocalDateTime dataFabricacao;
     private LocalDate dataValidade;
 
-    public Produto() {
-        id = -1;
-        descricao = DESCRICAO_PADRAO;
-        preco = 0.01F;
-        quantidade = 0;
-        dataFabricacao = LocalDateTime.now();
-        dataValidade = LocalDate.now().plusMonths(6); // o default é uma validade de 6 meses.
-    }
-
-    public Produto(int id, String descricao, float preco, int quantidade) {
-        setId(id);
-        setDescricao(descricao);
-        setPreco(preco);
-        setQuant(quantidade);
-        dataFabricacao = LocalDateTime.now();
-        dataValidade = LocalDate.now().plusMonths(6); // o default é uma validade de 6 meses.
-    }
-
     public Produto(int id, String descricao, float preco, int quantidade, LocalDateTime fabricacao, LocalDate v) {
-        setId(id);
-        setDescricao(descricao);
-        setPreco(preco);
-        setQuant(quantidade);
-        setDataFabricacao(fabricacao);
-        setDataValidade(v);
+        this.id = id;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.dataFabricacao = fabricacao;
+        this.dataValidade = v;
+    }
+
+    public Produto() {
+        this(-1, DESCRICAO_PADRAO, 0.01F, 0, LocalDateTime.now(), LocalDate.now().plusMonths(6));
+    }
+
+    public Produto(int id, String descricao, float preco, int quantidade, Timestamp fabricacao, Date v) {
+        this(id, descricao, preco, quantidade, fabricacao.toLocalDateTime(), v.toLocalDate());
     }
 
     public int getId() {
