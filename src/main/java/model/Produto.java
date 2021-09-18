@@ -24,6 +24,15 @@ public class Produto implements Serializable {
         dataValidade = LocalDate.now().plusMonths(6); // o default é uma validade de 6 meses.
     }
 
+    public Produto(int id, String descricao, float preco, int quantidade) {
+        setId(id);
+        setDescricao(descricao);
+        setPreco(preco);
+        setQuant(quantidade);
+        dataFabricacao = LocalDateTime.now();
+        dataValidade = LocalDate.now().plusMonths(6); // o default é uma validade de 6 meses.
+    }
+
     public Produto(int id, String descricao, float preco, int quantidade, LocalDateTime fabricacao, LocalDate v) {
         setId(id);
         setDescricao(descricao);
