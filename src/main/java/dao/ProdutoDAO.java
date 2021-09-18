@@ -99,7 +99,7 @@ public class ProdutoDAO {
 
                 for (int i = 0; rs.next(); i++) {
                     produtos[i] = new Produto(rs.getInt("id"), rs.getString("descricao"), rs.getFloat("preco"),
-                    rs.getInt("quantidade"), rs.getTimestamp("dataFabricacao"), rs.getDate("dataValidade"));
+                            rs.getInt("quantidade"), rs.getTimestamp("dataFabricacao"), rs.getDate("dataValidade"));
                 }
             }
             st.close();

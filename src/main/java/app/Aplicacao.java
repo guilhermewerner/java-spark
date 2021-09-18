@@ -8,7 +8,7 @@ public class Aplicacao {
     private static ProdutoService produtoService = new ProdutoService();
 
     public static void main(String[] args) {
-    	staticFiles.location("/");
+        staticFiles.location("/");
 
         port(6789);
 
